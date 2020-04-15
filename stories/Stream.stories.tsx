@@ -69,7 +69,13 @@ export const volume = () => {
   const volume = number("volume", 1, volumeOptions);
 
   return (
-    <Stream src={defaultVideo} volume={volume} loop {...streamActionProps} />
+    <Stream
+      src={defaultVideo}
+      volume={volume}
+      controls
+      loop
+      {...streamActionProps}
+    />
   );
 };
 

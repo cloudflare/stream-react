@@ -1,5 +1,11 @@
 {
+  "name": "stream-react",
   "version": "0.1.0",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloudflare/stream-react"
+  },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -27,7 +33,6 @@
       "pre-commit": "yarn prettier && tsdx lint"
     }
   },
-  "name": "stream-react",
   "author": "Kevin Kipp",
   "module": "dist/stream-react.esm.js",
   "devDependencies": {

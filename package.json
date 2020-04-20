@@ -1,5 +1,5 @@
 {
-  "name": "stream-react",
+  "name": "@cloudflare/stream-react",
   "version": "0.1.1",
   "license": "BSD-3-Clause",
   "repository": {

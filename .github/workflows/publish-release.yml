@@ -15,9 +15,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm ci
-      - run: npm run build
-      - run: npm test
+      - run: yarn --frozen-lockfile
+      - run: yarn build
+      - run: yarn test
 
   publish-npm-release:
     needs: build
@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
+      - run: yarn --frozen-lockfile
       # Only publish when tag does not include beta or rc suffix
       - run: if [[ ${TAG_NAME} =~ ^v[0-9]+.[0-9]+.[0-9]+$ ]]; then npm publish; fi
         env:

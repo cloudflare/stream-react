@@ -93,7 +93,7 @@ const noop = () => {};
 
 type AttributeProps = {
   /**
-   * The video id from the video you’ve uploaded to Cloudflare Stream should be included here.
+   * Either the video id or the signed url for the video you’ve uploaded to Cloudflare Stream should be included here.
    */
   src: string;
   adUrl?: string;

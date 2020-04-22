@@ -1,6 +1,6 @@
 # @cloudflare/stream-react
 
-A React wrapper for the [Cloudflare Stream player](https://developers.cloudflare.com/stream/video-playback/).
+Official React component for [Cloudflare Stream](https://www.cloudflare.com/products/cloudflare-stream/).
 
 ## Installation
 
@@ -31,6 +31,9 @@ export type StreamProps = {
    * Either the video id or the signed url for the video you’ve uploaded to Cloudflare Stream should be included here.
    */
   src: string;
+  /**
+   * URL to a VAST advertising tag. If specified, the player will attempt to display ads speficied by the VAST ad schema.
+   */
   adUrl?: string;
   /**
    * The height of the video’s display area, in CSS pixels.

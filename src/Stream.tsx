@@ -6,23 +6,68 @@ import React, {
   FC,
 } from "react";
 
+const scriptLocation =
+  "https://embed.videodelivery.net/embed/r4xu.fla9.latest.js";
+
+let streamScript = document.querySelector<HTMLScriptElement>(
+  `script[src="${scriptLocation}"]`
+);
+
+function useStreamElement(
+  containerRef: RefObject<HTMLDivElement>,
+  streamRef: MutableRefObject<HTMLStreamElement | undefined>
+) {
+  // Need to create stream element with document.createElement
+  // because React will log console warnings if we render
+  // invalid HTML elements in JSX
+  useEffect(() => {
+    if (!containerRef.current) return;
+    // grab current container from ref so we can use it in the
+    // callback we return for cleanup.
+    const container = containerRef.current;
+    const stream = document.createElement("stream") as HTMLStreamElement;
+
+    // store stream element on ref
+    streamRef.current = stream;
+
+    // insert stream element into dom
+    container.appendChild(stream);
+    return () => {
+      // clean up before unmounting or re-running the effect
+      container.removeChild(stream);
+    };
+  }, [streamRef, containerRef]);
+}
+
+declare global {
+  interface Window {
+    __stream?: {
+      init: () => void;
+      initElement: (streamElement: HTMLStreamElement) => void;
+    };
+  }
+}
+
 /**
  * Script to load the player. This initializes the player on the stream element
  */
-function useStreamScript() {
+function useStreamScript(ref: MutableRefObject<HTMLStreamElement | undefined>) {
   useEffect(() => {
-    const streamScript = document.createElement("script");
-    streamScript.setAttribute("data-cfasync", "false");
-    streamScript.setAttribute("defer", "true");
-    streamScript.setAttribute("type", "text/javascript");
-    streamScript.setAttribute(
-      "src",
-      "https://embed.videodelivery.net/embed/r4xu.fla9.latest.js"
-    );
-    document.head.appendChild(streamScript);
-    return () => {
-      document.head.removeChild(streamScript);
-    };
+    if (streamScript === null) {
+      streamScript = document.createElement("script");
+      streamScript.setAttribute("data-cfasync", "false");
+      streamScript.setAttribute("defer", "true");
+      streamScript.setAttribute("type", "text/javascript");
+      streamScript.setAttribute("src", scriptLocation);
+      document.head.appendChild(streamScript);
+      return;
+    }
+
+    const streamElement = ref.current;
+    if (window.__stream && streamElement) {
+      window.__stream.initElement(streamElement);
+    }
+
     // no dependencies in the dependancy array means this only fires on mount
     // and the cleanup only fires on unmount.
   }, []);
@@ -310,26 +355,7 @@ export const Stream: FC<StreamProps> = ({
   // don't need to mutate this ref
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Need to create stream element with document.createElement
-  // because React will log console warnings if we render
-  // invalid HTML elements in JSX
-  useEffect(() => {
-    if (!containerRef.current) return;
-    // grab current container from ref so we can use it in the
-    // callback we return for cleanup.
-    const container = containerRef.current;
-    const stream = document.createElement("stream") as HTMLStreamElement;
-
-    stream.preload;
-    // store stream element on ref
-    ref.current = stream;
-    // insert stream element into dom
-    container.appendChild(stream);
-    return () => {
-      // clean up before unmounting or re-running the effect
-      container.removeChild(stream);
-    };
-  }, [ref]);
+  useStreamElement(containerRef, ref);
 
   // set attributes
   useAttribute("ad-url", ref, adUrl);
@@ -391,7 +417,7 @@ export const Stream: FC<StreamProps> = ({
   useEvent("stream-adtimeout", ref, onStreamAdTimeout);
 
   // stream element is set up from effects, load script
-  useStreamScript();
+  useStreamScript(ref);
 
   return <div style={{ height, width }} ref={containerRef} />;
 };

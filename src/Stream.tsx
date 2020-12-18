@@ -7,7 +7,7 @@ import React, {
 } from "react";
 
 const scriptLocation =
-  "https://embed.videodelivery.net/embed/r4xu.fla9.latest.js";
+  "https://embed.cloudflarestream.com/embed/3f8m.fla9.latest.js";
 
 let streamScript = document.querySelector<HTMLScriptElement>(
   `script[src="${scriptLocation}"]`

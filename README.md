@@ -65,7 +65,7 @@ export type StreamProps = {
    */
   controls?: boolean;
   /**
-   * Returns the current playback time in seconds. Setting this value seeks the video to a new time.
+   * Setting this value seeks the video to a new time.
    */
   currentTime?: number;
   /**

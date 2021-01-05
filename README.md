@@ -65,7 +65,8 @@ export type StreamProps = {
    */
   controls?: boolean;
   /**
-   * Setting this value seeks the video to a new time.
+   * Setting this value seeks the video to a new time. Note that seeking only occurs when a new value is set. If this is problematic for your use-case, consider using the streamRef prop to set the currentTime directly on
+   * the stream element which will seek every time the value is set.
    */
   currentTime?: number;
   /**

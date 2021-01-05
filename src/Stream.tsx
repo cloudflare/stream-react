@@ -51,7 +51,7 @@ declare global {
 /**
  * Script to load the player. This initializes the player on the stream element
  */
-function useStreamScript(ref: MutableRefObject<HTMLStreamElement | null>) {
+function useStreamScript(ref: RefObject<HTMLStreamElement>) {
   useEffect(() => {
     if (streamScript === null) {
       streamScript = document.createElement("script");
@@ -83,7 +83,7 @@ type Primitive = string | number | boolean;
  */
 function useAttribute(
   attributeName: string,
-  ref: RefObject<HTMLStreamElement | undefined>,
+  ref: RefObject<HTMLStreamElement>,
   value?: Primitive
 ) {
   useEffect(() => {
@@ -119,7 +119,7 @@ function useProperty<T, Key extends keyof T>(
  */
 function useEvent(
   event: string,
-  ref: RefObject<HTMLStreamElement | undefined>,
+  ref: RefObject<HTMLStreamElement>,
   callback: EventListener = noop
 ) {
   useEffect(() => {

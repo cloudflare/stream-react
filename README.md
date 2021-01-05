@@ -35,7 +35,7 @@ export type StreamProps = {
    * Ref for accessing the underlying stream element. Useful for providing imperative access to the player API:
    * https://developers.cloudflare.com/stream/viewing-videos/using-the-player-api
    */
-  streamRef?: MutableRefObject<HTMLStreamElement | undefined>;
+  streamRef?: MutableRefObject<HTMLStreamElement | null>;
   /**
    * URL to a VAST advertising tag. If specified, the player will attempt to display ads speficied by the VAST ad schema.
    */

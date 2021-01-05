@@ -32,6 +32,11 @@ export type StreamProps = {
    */
   src: string;
   /**
+   * Ref for accessing the underlying stream element. Useful for providing imperative access to the player API:
+   * https://developers.cloudflare.com/stream/viewing-videos/using-the-player-api
+   */
+  streamRef?: MutableRefObject<HTMLStreamElement | null>;
+  /**
    * URL to a VAST advertising tag. If specified, the player will attempt to display ads speficied by the VAST ad schema.
    */
   adUrl?: string;
@@ -60,7 +65,8 @@ export type StreamProps = {
    */
   controls?: boolean;
   /**
-   * Returns the current playback time in seconds. Setting this value seeks the video to a new time.
+   * Setting this value seeks the video to a new time. Note that seeking only occurs when a new value is set. If this is problematic for your use-case, consider using the streamRef prop to set the currentTime directly on
+   * the stream element which will seek every time the value is set.
    */
   currentTime?: number;
   /**

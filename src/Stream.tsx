@@ -15,7 +15,7 @@ let streamScript = document.querySelector<HTMLScriptElement>(
 
 function useStreamElement(
   containerRef: RefObject<HTMLDivElement>,
-  streamRef: MutableRefObject<HTMLStreamElement | undefined>
+  streamRef: MutableRefObject<HTMLStreamElement | null>
 ) {
   // Need to create stream element with document.createElement
   // because React will log console warnings if we render
@@ -51,7 +51,7 @@ declare global {
 /**
  * Script to load the player. This initializes the player on the stream element
  */
-function useStreamScript(ref: MutableRefObject<HTMLStreamElement | undefined>) {
+function useStreamScript(ref: RefObject<HTMLStreamElement>) {
   useEffect(() => {
     if (streamScript === null) {
       streamScript = document.createElement("script");
@@ -83,7 +83,7 @@ type Primitive = string | number | boolean;
  */
 function useAttribute(
   attributeName: string,
-  ref: RefObject<HTMLStreamElement | undefined>,
+  ref: RefObject<HTMLStreamElement>,
   value?: Primitive
 ) {
   useEffect(() => {
@@ -119,7 +119,7 @@ function useProperty<T, Key extends keyof T>(
  */
 function useEvent(
   event: string,
-  ref: RefObject<HTMLStreamElement | undefined>,
+  ref: RefObject<HTMLStreamElement>,
   callback: EventListener = noop
 ) {
   useEffect(() => {
@@ -299,7 +299,11 @@ type Compute<T> = T extends Function ? T : {} & { [Key in keyof T]: T[Key] };
 
 export type StreamProps = Compute<
   {
-    streamRef?: MutableRefObject<HTMLStreamElement>;
+    /**
+     * Ref for accessing the underlying stream element. Useful for providing imperative access to the player API:
+     * https://developers.cloudflare.com/stream/viewing-videos/using-the-player-api
+     */
+    streamRef?: MutableRefObject<HTMLStreamElement | null>;
   } & AttributeProps &
     PropertyProps &
     Events
@@ -346,7 +350,7 @@ export const Stream: FC<StreamProps> = ({
 }) => {
   // initialize with no argument to get a mutable ref back instead
   // of readonly RefObject which cannot be mutated directly
-  const internalStreamRef = useRef<HTMLStreamElement>();
+  const internalStreamRef = useRef<HTMLStreamElement>(null);
   // Because useRef needs to be called the same number of times
   // across renders, we create an internal ref that we only use
   // when playerRef is not provided

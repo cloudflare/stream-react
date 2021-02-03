@@ -68,7 +68,7 @@ function useStreamScript(ref: RefObject<HTMLStreamElement>) {
       window.__stream.initElement(streamElement);
     }
 
-    // no dependencies in the dependancy array means this only fires on mount
+    // no dependencies in the dependency array means this only fires on mount
     // and the cleanup only fires on unmount.
   }, []);
 }

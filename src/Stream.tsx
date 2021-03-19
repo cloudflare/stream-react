@@ -9,10 +9,6 @@ import React, {
 const scriptLocation =
   "https://embed.videodelivery.net/embed/r4xu.fla9.latest.js";
 
-let streamScript = document.querySelector<HTMLScriptElement>(
-  `script[src="${scriptLocation}"]`
-);
-
 function useStreamElement(
   containerRef: RefObject<HTMLDivElement>,
   streamRef: MutableRefObject<HTMLStreamElement | null>
@@ -53,8 +49,11 @@ declare global {
  */
 function useStreamScript(ref: RefObject<HTMLStreamElement>) {
   useEffect(() => {
-    if (streamScript === null) {
-      streamScript = document.createElement("script");
+    const existingScript = document.querySelector<HTMLScriptElement>(
+      `script[src="${scriptLocation}"]`
+    );
+    if (existingScript === null) {
+      const streamScript = document.createElement("script");
       streamScript.setAttribute("data-cfasync", "false");
       streamScript.setAttribute("defer", "true");
       streamScript.setAttribute("type", "text/javascript");

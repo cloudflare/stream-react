@@ -1,0 +1,39 @@
+import { useMemo } from "react";
+import { Preload } from "./types";
+
+interface IframeSrcOptions {
+  muted?: boolean;
+  loop?: boolean;
+  autoplay?: boolean;
+  controls?: boolean;
+  poster?: string;
+  adUrl?: string;
+  preload?: Preload;
+}
+
+export function useIframeSrc(
+  src: string,
+  { muted, preload, loop, autoplay, controls, poster, adUrl }: IframeSrcOptions
+) {
+  const paramString = [
+    poster && `poster=${encodeURIComponent(poster)}`,
+    adUrl && `ad-url=${encodeURIComponent(adUrl)}`,
+    muted && "muted=true",
+    preload && `preload=${preload}`,
+    loop && "loop=true",
+    autoplay && "autoplay=true",
+    !controls && "controls=false",
+  ]
+    .filter(Boolean)
+    .join("&");
+
+  const iframeSrc = useMemo(
+    () => `https://iframe.videodelivery.net/${src}?${paramString}`,
+    // we intentionally do NOT include paramString here because we want
+    // to avoid changing the URL when these options change. Changes to
+    // these options will instead be handled separately via the SDK.
+    [src]
+  );
+
+  return iframeSrc;
+}

@@ -1,1 +1,3 @@
-export { Stream, StreamProps, HTMLStreamElement } from "./Stream";
+export { Stream } from "./Stream";
+export { useStreamSDK } from "./useStreamSDK";
+export { StreamPlayerApi, StreamProps } from "./types";

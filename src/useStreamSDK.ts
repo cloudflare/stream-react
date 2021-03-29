@@ -11,7 +11,7 @@ export function useStreamSDK() {
   useEffect(() => {
     if (!streamSdk) {
       const existingScript = document.querySelector<HTMLScriptElement>(
-        `script[src='https://embed.videodelivery.net/embed/sdk.latest.js']`
+        `script[src='${sdkScriptLocation}']`
       );
       const script = existingScript ?? document.createElement("script");
       script.addEventListener("load", () => {

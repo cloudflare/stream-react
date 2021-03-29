@@ -1,4 +1,4 @@
-import { MutableRefObject, CSSProperties } from "react";
+import { MutableRefObject } from "react";
 
 declare global {
   interface Window {

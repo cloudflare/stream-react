@@ -73,11 +73,13 @@ export interface StreamPlayerApi {
    */
   src: string;
   /**
-   * Number representing the intrinsic height of the video in pixels.
+   * Number representing the intrinsic height of the video in pixels. Note that this is specific to the resolution of the actual video depending on the quality being played. For example, a 16:9 video playing at 1080p will have an intrinsic height of 1080.
+   * https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/videoHeight
    */
   videoHeight: number;
   /**
-   * Number representing the intrinsic width of the video in pixels.
+   * Number representing the intrinsic width of the video in pixels. Note that this is specific to the resolution of the actual video depending on the quality being played. For example, a 16:9 video playing at 1080p will have an intrinsic width of 1920.
+   * https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/videoWidth
    */
   videoWidth: number;
   /**
@@ -86,7 +88,7 @@ export interface StreamPlayerApi {
   volume: number;
 }
 
-export type StreamProps = {
+export interface StreamProps {
   /**
    * VAST tag for displaying ads
    */
@@ -255,4 +257,4 @@ export type StreamProps = {
    * Fires when ad-url attribute is present and the ad took too long to load.
    */
   onStreamAdTimeout?: () => void;
-};
+}

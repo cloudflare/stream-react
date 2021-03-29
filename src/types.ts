@@ -31,7 +31,7 @@ export interface StreamPlayerApi {
    */
   autoplay: boolean;
   /**
-   * Shows the default video controls such as buttons for play/pause, volume controls. You may choose to build buttons and controls that work with the player.
+   * Shows the default video controls such as buttons for play/pause, volume controls. You may choose to build buttons and controls that work with the player. If you hide controls, you may choose to build custom buttons and controls that work with the player.
    */
   controls: boolean;
   /**
@@ -106,7 +106,7 @@ export interface StreamProps {
    */
   className?: string;
   /**
-   * Shows the default video controls such as buttons for play/pause, volume controls. You may choose to build buttons and controls that work with the player.
+   * Shows the default video controls such as buttons for play/pause, volume controls. You may choose to build buttons and controls that work with the player. If you hide controls, you may choose to build custom buttons and controls that work with the player.
    */
   controls?: boolean;
   /**

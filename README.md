@@ -32,10 +32,10 @@ export type StreamProps = {
    */
   src: string;
   /**
-   * Ref for accessing the underlying stream element. Useful for providing imperative access to the player API:
+   * Ref for accessing the underlying Stream player API. Useful for providing imperative access:
    * https://developers.cloudflare.com/stream/viewing-videos/using-the-player-api
    */
-  streamRef?: MutableRefObject<HTMLStreamElement | null>;
+  streamRef?: MutableRefObject<StreamPlayerApi | undefined>;
   /**
    * URL to a VAST advertising tag. If specified, the player will attempt to display ads speficied by the VAST ad schema.
    */
@@ -55,8 +55,6 @@ export type StreamProps = {
   /**
    * Tells the browser to immediately start downloading the video and play it as soon as it can. Note that mobile browsers generally do not support this attribute, the user must tap the screen to begin video playback. Please consider mobile users or users with Internet usage limits as some users don’t have unlimited Internet access before using this attribute.
    *
-   * To disable video autoplay, the autoplay attribute needs to be removed altogether as this attribute. Setting autoplay="false" will not work; the video will autoplay if the attribute is there in the <stream> tag.
-   *
    * In addition, some browsers now prevent videos with audio from playing automatically. You may add the mute attribute to allow your videos to autoplay. For more information, [go here](https://webkit.org/blog/6784/new-video-policies-for-ios/).
    */
   autoplay?: boolean;
@@ -66,7 +64,7 @@ export type StreamProps = {
   controls?: boolean;
   /**
    * Setting this value seeks the video to a new time. Note that seeking only occurs when a new value is set. If this is problematic for your use-case, consider using the streamRef prop to set the currentTime directly on
-   * the stream element which will seek every time the value is set.
+   * the stream player which will seek every time the value is set.
    */
   currentTime?: number;
   /**

@@ -2,11 +2,16 @@ import { useState, useEffect } from "react";
 
 const sdkScriptLocation = "https://embed.videodelivery.net/embed/sdk.latest.js";
 
+// This needs to be wrapped as such for two reasons:
+// - Stream is a function, and useState invokes functions immediately and uses the return value.
+// - We need to check typeof on window to ensure safety for server side rendering.
+export const safelyAccessStreamSDK = () => {
+  if (typeof window === "undefined") return undefined;
+  return window.Stream;
+};
+
 export function useStreamSDK() {
-  // Because we're storing the Stream function in state, we need to pass a
-  // function in that returns it because React will invoke functions that
-  // are passed into state
-  const [streamSdk, setStreamSdk] = useState(() => window.Stream);
+  const [streamSdk, setStreamSdk] = useState(safelyAccessStreamSDK);
 
   useEffect(() => {
     if (!streamSdk) {
@@ -15,8 +20,7 @@ export function useStreamSDK() {
       );
       const script = existingScript ?? document.createElement("script");
       script.addEventListener("load", () => {
-        // Same thing here, passing in a function that will return window.Stream
-        setStreamSdk(() => window.Stream);
+        setStreamSdk(safelyAccessStreamSDK);
       });
       if (!existingScript) {
         script.src = sdkScriptLocation;

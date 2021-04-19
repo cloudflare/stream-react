@@ -9,7 +9,7 @@ import React, {
   MutableRefObject,
 } from "react";
 import { StreamPlayerApi, StreamProps, VideoDimensions } from "types";
-import { useStreamSDK } from "./useStreamSDK";
+import { useStreamSDK, safelyAccessStreamSDK } from "./useStreamSDK";
 import { useIframeSrc } from "./useIframeSrc";
 
 /**
@@ -162,8 +162,9 @@ export const StreamEmbed: FC<StreamProps> = ({
   // instantiate API after properties are bound because we want undefined
   // values to be set before defining the properties
   useEffect(() => {
-    if (iframeRef.current && window.Stream) {
-      const api = window.Stream(iframeRef.current);
+    const Stream = safelyAccessStreamSDK();
+    if (iframeRef.current && Stream) {
+      const api = Stream(iframeRef.current);
       ref.current = api;
       const { videoHeight, videoWidth } = api;
       if (videoHeight && videoWidth)

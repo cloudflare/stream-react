@@ -96,6 +96,7 @@ export const StreamEmbed: FC<StreamProps> = ({
   autoplay = false,
   loop = false,
   preload = "metadata",
+  defaultTextTrack,
   height,
   width,
   poster,
@@ -148,6 +149,7 @@ export const StreamEmbed: FC<StreamProps> = ({
     controls,
     poster,
     adUrl,
+    defaultTextTrack,
   });
 
   useProperty("muted", ref, muted);

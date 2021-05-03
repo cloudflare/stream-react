@@ -114,6 +114,11 @@ export interface StreamProps {
    */
   currentTime?: number;
   /**
+   * Will initialize the player with the specified text track enabled. The value should be the BCP-47 language code that was used to [upload the text track](https://developers.cloudflare.com/stream/uploading-videos/adding-captions).
+   * Note: This will _only_ work once during initialization. Beyond that point the user has full control over their text track settings.
+   */
+  defaultTextTrack?: string;
+  /**
    * The height of the video’s display area, in CSS pixels.
    */
   height?: string;

@@ -105,6 +105,7 @@ export const StreamEmbed: FC<StreamProps> = ({
   streamRef,
   responsive = true,
   className,
+  title,
   onAbort,
   onCanPlay,
   onCanPlayThrough,
@@ -216,6 +217,7 @@ export const StreamEmbed: FC<StreamProps> = ({
       <iframe
         ref={iframeRef}
         src={iframeSrc}
+        title={title}
         style={responsive ? responsiveIframeStyles : undefined}
         frameBorder={0}
         height={height}

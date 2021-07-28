@@ -154,6 +154,15 @@ export interface StreamProps {
    */
   streamRef?: MutableRefObject<StreamPlayerApi | undefined>;
   /**
+   * Title of the iframe that the player will load within.
+   *
+   * From the MDN docs: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#accessibility_concerns
+   *
+   * People navigating with assistive technology such as a screen reader can use the title attribute on an <iframe> to label its content. The title's value should concisely describe the embedded content.
+   * Without this title, they have to navigate into the <iframe> to determine what its embedded content is. This context shift can be confusing and time-consuming, especially for pages with multiple <iframe>s and/or if embeds contain interactive content like video or audio.
+   */
+  title?: string;
+  /**
    * Sets volume from 0.0 (silent) to 1.0 (maximum value)
    */
   volume?: number;

@@ -82,6 +82,10 @@ export type StreamProps = {
    */
   preload?: "auto" | "metadata" | "none" | boolean;
   /**
+   * Automatically manages the aspect ratio of the iframe for you. Defaults to true. If you want to manually handle the styles yourself, set this to false.
+   */
+  responsive?: boolean;
+  /**
    * Sets volume from 0.0 (silent) to 1.0 (maximum value)
    */
   volume?: number;

@@ -22,7 +22,7 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
-    "lint": "tsdx lint",
+    "clean": "rm -rf ./dist && rm -rf ./example/.cache && rm -rf ./example/dist",
     "prepare": "tsdx build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
@@ -33,7 +33,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn prettier && tsdx lint"
+      "pre-commit": "yarn clean && yarn prettier"
     }
   },
   "author": "Kevin Kipp",

@@ -96,6 +96,7 @@ export const StreamEmbed: FC<StreamProps> = ({
   autoplay = false,
   loop = false,
   preload = "metadata",
+  primaryColor,
   defaultTextTrack,
   height,
   width,
@@ -149,6 +150,7 @@ export const StreamEmbed: FC<StreamProps> = ({
     autoplay,
     controls,
     poster,
+    primaryColor,
     adUrl,
     defaultTextTrack,
   });
@@ -160,6 +162,7 @@ export const StreamEmbed: FC<StreamProps> = ({
   useProperty("currentTime", ref, currentTime);
   useProperty("loop", ref, loop);
   useProperty("preload", ref, preload);
+  useProperty("primaryColor", ref, primaryColor);
   useProperty("volume", ref, volume);
 
   // instantiate API after properties are bound because we want undefined

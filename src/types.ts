@@ -65,6 +65,11 @@ export interface StreamPlayerApi {
    */
   preload: Preload;
   /**
+   * Any valid CSS color value provided will be applied to certain elements of the player's UI.
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+   */
+  primaryColor?: string;
+  /**
    * Unsubscribe from events
    */
   removeEventListener: (event: string, handler: () => void) => void;
@@ -140,6 +145,11 @@ export interface StreamProps {
    * The <video> element does not force the browser to follow the value of this attribute; it is a mere hint. Even though the preload="none" option is a valid HTML5 attribute, Stream player will always load some metadata to initialize the player. The amount of data loaded in this case is negligable.
    */
   preload?: Preload;
+  /**
+   * Any valid CSS color value provided will be applied to certain elements of the player's UI.
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+   */
+  primaryColor?: string;
   /**
    * Automatically manages the aspect ratio of the iframe for you. Defaults to true. If you want to manually handle the styles yourself, set this to false.
    */

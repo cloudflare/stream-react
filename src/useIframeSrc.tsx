@@ -7,6 +7,7 @@ interface IframeSrcOptions {
   autoplay?: boolean;
   controls?: boolean;
   poster?: string;
+  primaryColor?: string;
   adUrl?: string;
   defaultTextTrack?: string;
   preload?: Preload;
@@ -21,6 +22,7 @@ export function useIframeSrc(
     autoplay,
     controls,
     poster,
+    primaryColor,
     adUrl,
     defaultTextTrack,
   }: IframeSrcOptions
@@ -30,6 +32,7 @@ export function useIframeSrc(
     adUrl && `ad-url=${encodeURIComponent(adUrl)}`,
     defaultTextTrack &&
       `defaultTextTrack=${encodeURIComponent(defaultTextTrack)}`,
+    primaryColor && `primaryColor=${encodeURIComponent(primaryColor)}`,
     muted && "muted=true",
     preload && `preload=${preload}`,
     loop && "loop=true",

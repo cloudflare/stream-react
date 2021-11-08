@@ -8,7 +8,7 @@ import React, {
   useMemo,
   MutableRefObject,
 } from "react";
-import { StreamPlayerApi, StreamProps, VideoDimensions } from "types";
+import { StreamPlayerApi, StreamProps, VideoDimensions } from "./types";
 import { useStreamSDK, safelyAccessStreamSDK } from "./useStreamSDK";
 import { useIframeSrc } from "./useIframeSrc";
 import { validSrcUrl } from "./validSrcUrl";

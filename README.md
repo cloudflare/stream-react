@@ -82,6 +82,11 @@ export type StreamProps = {
    */
   preload?: "auto" | "metadata" | "none" | boolean;
   /**
+   * Any valid CSS color value provided will be applied to certain elements of the player's UI.
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+   */
+  primaryColor?: string;
+  /**
    * Automatically manages the aspect ratio of the iframe for you. Defaults to true. If you want to manually handle the styles yourself, set this to false.
    */
   responsive?: boolean;

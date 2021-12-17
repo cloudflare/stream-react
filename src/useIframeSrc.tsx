@@ -8,6 +8,7 @@ interface IframeSrcOptions {
   controls?: boolean;
   poster?: string;
   primaryColor?: string;
+  startTime?: string | number;
   adUrl?: string;
   defaultTextTrack?: string;
   preload?: Preload;
@@ -24,6 +25,7 @@ export function useIframeSrc(
     poster,
     primaryColor,
     adUrl,
+    startTime,
     defaultTextTrack,
   }: IframeSrcOptions
 ) {
@@ -33,6 +35,7 @@ export function useIframeSrc(
     defaultTextTrack &&
       `defaultTextTrack=${encodeURIComponent(defaultTextTrack)}`,
     primaryColor && `primaryColor=${encodeURIComponent(primaryColor)}`,
+    startTime && `startTime=${startTime}`,
     muted && "muted=true",
     preload && `preload=${preload}`,
     loop && "loop=true",

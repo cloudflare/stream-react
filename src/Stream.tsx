@@ -104,6 +104,7 @@ export const StreamEmbed: FC<StreamProps> = ({
   poster,
   currentTime = 0,
   volume = 1,
+  startTime,
   streamRef,
   responsive = true,
   className,
@@ -154,6 +155,7 @@ export const StreamEmbed: FC<StreamProps> = ({
     primaryColor,
     adUrl,
     defaultTextTrack,
+    startTime,
   });
 
   // While it's easier for most consumers to simply provide the video id

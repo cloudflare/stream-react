@@ -82,6 +82,19 @@ export type StreamProps = {
    */
   preload?: "auto" | "metadata" | "none" | boolean;
   /**
+   * Any valid CSS color value provided will be applied to certain elements of the player's UI.
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+   */
+  primaryColor?: string;
+  /**
+   * A timestamp that specifies the time when playback begins.
+   * If a plain number is used such as ?startTime=123, it will
+   * be interpreted as 123 seconds. More human readable timestamps
+   * can also be used, such as ?startTime=1h12m27s for 1 hour,
+   * 12 minutes, and 27 seconds.
+   */
+  startTime?: string | number;
+  /**
    * Automatically manages the aspect ratio of the iframe for you. Defaults to true. If you want to manually handle the styles yourself, set this to false.
    */
   responsive?: boolean;

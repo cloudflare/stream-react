@@ -159,6 +159,14 @@ export interface StreamProps {
    */
   src: string;
   /**
+   * A timestamp that specifies the time when playback begins.
+   * If a plain number is used such as ?startTime=123, it will
+   * be interpreted as 123 seconds. More human readable timestamps
+   * can also be used, such as ?startTime=1h12m27s for 1 hour,
+   * 12 minutes, and 27 seconds.
+   */
+  startTime?: string | number;
+  /**
    * Ref for accessing the underlying stream element. Useful for providing imperative access to the player API:
    * https://developers.cloudflare.com/stream/viewing-videos/using-the-player-api
    */

@@ -41,7 +41,6 @@ export function useIframeSrc(
     loop && "loop=true",
     autoplay && "autoplay=true",
     !controls && "controls=false",
-    "version=build.1638815245",
   ]
     .filter(Boolean)
     .join("&");

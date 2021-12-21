@@ -191,102 +191,102 @@ export interface StreamProps {
   /**
    * Sent when playback is aborted; for example, if the media is playing and is restarted from the beginning, this event is sent.
    */
-  onAbort?: () => void;
+  onAbort?: EventListener;
   /**
    * Sent when enough data is available that the media can be played, at least for a couple of frames.
    */
-  onCanPlay?: () => void;
+  onCanPlay?: EventListener;
   /**
    * Sent when the entire media can be played without interruption, assuming the download rate remains at least at the current level. It will also be fired when playback is toggled between paused and playing. Note: Manually setting the currentTime will eventually fire a canplaythrough event in firefox. Other browsers might not fire this event.
    */
-  onCanPlayThrough?: () => void;
+  onCanPlayThrough?: EventListener;
   /**
    * The metadata has loaded or changed, indicating a change in duration of the media. This is sent, for example, when the media has loaded enough that the duration is known.
    */
-  onDurationChange?: () => void;
+  onDurationChange?: EventListener;
   /**
    * Sent when playback completes.
    */
-  onEnded?: () => void;
+  onEnded?: EventListener;
   /**
    * Sent when an error occurs. (e.g. the video has not finished encoding yet, or the video fails to load due to an incorrect signed URL)
    */
-  onError?: () => void;
+  onError?: EventListener;
   /**
    * The first frame of the media has finished loading.
    */
-  onLoadedData?: () => void;
+  onLoadedData?: EventListener;
   /**
    * The media’s metadata has finished loading; all attributes now contain as much useful information as they’re going to.
    */
-  onLoadedMetaData?: () => void;
+  onLoadedMetaData?: EventListener;
   /**
    * Sent when loading of the media begins.
    */
-  onLoadStart?: () => void;
+  onLoadStart?: EventListener;
   /**
    * Sent when the playback state is changed to paused (paused property is true).
    */
-  onPause?: () => void;
+  onPause?: EventListener;
   /**
    * Sent when the playback state is no longer paused, as a result of the play method, or the autoplay attribute.
    */
-  onPlay?: () => void;
+  onPlay?: EventListener;
   /**
    * Sent when the media has enough data to start playing, after the play event, but also when recovering from being stalled, when looping media restarts, and after seeked, if it was playing before seeking.
    */
-  onPlaying?: () => void;
+  onPlaying?: EventListener;
   /**
    * Sent periodically to inform interested parties of progress downloading the media. Information about the current amount of the media that has been downloaded is available in the media element’s buffered attribute.
    */
-  onProgress?: () => void;
+  onProgress?: EventListener;
   /**
    * Sent when the playback speed changes.
    */
-  onRateChange?: () => void;
+  onRateChange?: EventListener;
   /**
    * Sent when the video's intrinsic dimensions (videoHeight & videoWidth) change.
    * https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/videoHeight
    */
-  onResize?: () => void;
+  onResize?: EventListener;
   /**
    * Sent when a seek operation completes.
    */
-  onSeeked?: () => void;
+  onSeeked?: EventListener;
   /**
    * Sent when a seek operation begins.
    */
-  onSeeking?: () => void;
+  onSeeking?: EventListener;
   /**
    * Sent when the user agent is trying to fetch media data, but data is unexpectedly not forthcoming.
    */
-  onStalled?: () => void;
+  onStalled?: EventListener;
   /**
    * Sent when loading of the media is suspended; this may happen either because the download has completed or because it has been paused for any other reason.
    */
-  onSuspend?: () => void;
+  onSuspend?: EventListener;
   /**
    * The time indicated by the element’s currentTime attribute has changed.
    */
-  onTimeUpdate?: () => void;
+  onTimeUpdate?: EventListener;
   /**
    * Sent when the audio volume changes (both when the volume is set and when the muted attribute is changed).
    */
-  onVolumeChange?: () => void;
+  onVolumeChange?: EventListener;
   /**
    * Sent when the requested operation (such as playback) is delayed pending the completion of another operation (such as a seek).
    */
-  onWaiting?: () => void;
+  onWaiting?: EventListener;
   /**
    * Fires when ad-url attribute is present and the ad begins playback
    */
-  onStreamAdStart?: () => void;
+  onStreamAdStart?: EventListener;
   /**
    * Fires when ad-url attribute is present and the ad finishes playback
    */
-  onStreamAdEnd?: () => void;
+  onStreamAdEnd?: EventListener;
   /**
    * Fires when ad-url attribute is present and the ad took too long to load.
    */
-  onStreamAdTimeout?: () => void;
+  onStreamAdTimeout?: EventListener;
 }

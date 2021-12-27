@@ -72,7 +72,7 @@ export interface StreamPlayerApi {
   /**
    * Unsubscribe from events
    */
-  removeEventListener: (event: string, handler: () => void) => void;
+  removeEventListener: (event: string, handler: EventListener) => void;
   /**
    * Either the video id or the signed url for the video you’ve uploaded to Cloudflare Stream should be included here.
    */

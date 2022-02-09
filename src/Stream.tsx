@@ -34,7 +34,7 @@ function useProperty<T, Key extends keyof T>(
 function useEvent(
   event: string,
   ref: MutableRefObject<StreamPlayerApi | undefined>,
-  callback: () => void = noop
+  callback: EventListener = noop
 ) {
   useEffect(() => {
     if (!ref.current) return;
@@ -211,11 +211,11 @@ export const StreamEmbed: FC<StreamProps> = ({
   useEvent("stream-adstart", ref, onStreamAdStart);
   useEvent("stream-adend", ref, onStreamAdEnd);
   useEvent("stream-adtimeout", ref, onStreamAdTimeout);
-  useEvent("resize", ref, () => {
+  useEvent("resize", ref, (e) => {
     if (ref.current) {
       const { videoHeight, videoWidth } = ref.current;
       setVideoDimensions({ videoHeight, videoWidth });
-      onResize && onResize();
+      onResize && onResize(e);
     }
   });
 

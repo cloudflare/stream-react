@@ -17,7 +17,7 @@ export interface StreamPlayerApi {
   /**
    * Subscribe to events
    */
-  addEventListener: (event: string, handler: () => void) => void;
+  addEventListener: (event: string, handler: EventListener) => void;
   /**
    * VAST tag for displaying ads
    */

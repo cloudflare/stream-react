@@ -72,6 +72,11 @@ export type StreamProps = {
    */
   muted?: boolean;
   /**
+   * Any valid CSS color value provided will be applied to the letterboxing/pillarboxing of the player’s UI. This can be set to transparent to avoid letterboxing/pillarboxing when not in fullscreen mode.
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+   */
+  letterboxColor?: string;
+  /**
    * A Boolean attribute; if included the player will automatically seek back to the start upon reaching the end of the video.
    */
   loop?: boolean;

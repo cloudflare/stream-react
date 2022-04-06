@@ -98,6 +98,7 @@ export const StreamEmbed: FC<StreamProps> = ({
   loop = false,
   preload = "metadata",
   primaryColor,
+  letterboxColor,
   defaultTextTrack,
   height,
   width,
@@ -153,6 +154,7 @@ export const StreamEmbed: FC<StreamProps> = ({
     controls,
     poster,
     primaryColor,
+    letterboxColor,
     adUrl,
     defaultTextTrack,
     startTime,
@@ -171,6 +173,7 @@ export const StreamEmbed: FC<StreamProps> = ({
   useProperty("loop", ref, loop);
   useProperty("preload", ref, preload);
   useProperty("primaryColor", ref, primaryColor);
+  useProperty("letterboxColor", ref, letterboxColor);
   useProperty("volume", ref, volume);
 
   // instantiate API after properties are bound because we want undefined

@@ -31,6 +31,10 @@ export interface StreamPlayerApi {
    */
   autoplay: boolean;
   /**
+   * An object conforming to the TimeRanges interface. This object is normalized, which means that ranges are ordered, don’t overlap, aren’t empty, and don’t touch (adjacent ranges are folded into one bigger range).
+   */
+  buffered: TimeRanges
+  /**
    * Shows the default video controls such as buttons for play/pause, volume controls. You may choose to build buttons and controls that work with the player. If you hide controls, you may choose to build custom buttons and controls that work with the player.
    */
   controls: boolean;
@@ -38,6 +42,19 @@ export interface StreamPlayerApi {
    * Returns the current playback time in seconds. Setting this value seeks the video to a new time.
    */
   currentTime: number;
+  /**
+   * The read-only HTMLMediaElement property duration indicates the length of the element's media in seconds. 
+   */
+  duration: number;
+  /**
+   * Indicates whether the media element has ended playback..
+   */
+  ended: boolean
+  /**
+   * Any valid CSS color value provided will be applied to the letterboxing/pillarboxing of the player’s UI. This can be set to transparent to avoid letterboxing/pillarboxing when not in fullscreen mode.
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+   */
+  letterboxColor?: string;
   /**
    * A Boolean attribute; if included the player will automatically seek back to the start upon reaching the end of the video.
    */
@@ -51,9 +68,17 @@ export interface StreamPlayerApi {
    */
   pause: () => void;
   /**
+   * Returns whether the video is paused
+   */
+  paused: boolean
+  /**
    * Attempts to play the video. Returns a promise that will resolve if playback begins successfully, and rejects if it fails. The most common reason for this to fail is browser policies which prevent unmuted playback that is not initiated by the user.
    */
   play: () => Promise<void>;
+  /**
+   * An object conforming to the TimeRanges interface. This object is normalized, which means that ranges are ordered, don’t overlap, aren’t empty, and don’t touch (adjacent ranges are folded into one bigger range).
+   */
+  played: TimeRanges
   /**
    * A URL for an image to be shown before the video is started or while the video is downloading. If this attribute isn’t specified, a thumbnail image of the video is shown.
    */

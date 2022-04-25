@@ -90,7 +90,7 @@ export const poster = () => {
 
   const poster = text(
     "poster",
-    "https://videodelivery.net/644822f93dcddab3e9441587d184ca2f/thumbnails/thumbnail.jpg?time=109s&height=1200"
+    "https://cloudflarestream.com/644822f93dcddab3e9441587d184ca2f/thumbnails/thumbnail.jpg?time=109s&height=1200"
   );
 
   return (

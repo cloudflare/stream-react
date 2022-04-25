@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
-const sdkScriptLocation = "https://embed.videodelivery.net/embed/sdk.latest.js";
+const sdkScriptLocation =
+  "https://embed.cloudflarestream.com/embed/sdk.latest.js";
 
 // This needs to be wrapped as such for two reasons:
 // - Stream is a function, and useState invokes functions immediately and uses the return value.

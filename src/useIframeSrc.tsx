@@ -49,7 +49,7 @@ export function useIframeSrc(
     .join("&");
 
   const iframeSrc = useMemo(
-    () => `https://iframe.videodelivery.net/${src}?${paramString}`,
+    () => `https://iframe.cloudflarestream.com/${src}?${paramString}`,
     // we intentionally do NOT include paramString here because we want
     // to avoid changing the URL when these options change. Changes to
     // these options will instead be handled separately via the SDK.

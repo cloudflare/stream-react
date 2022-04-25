@@ -1,6 +1,6 @@
 {
   "name": "@cloudflare/stream-react",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "license": "BSD-3-Clause",
   "publishConfig": {
     "access": "public"

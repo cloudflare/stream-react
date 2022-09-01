@@ -91,6 +91,7 @@ const Container: FC<{
 
 export const StreamEmbed: FC<StreamProps> = ({
   src,
+  customerCode,
   adUrl,
   controls = false,
   muted = false,
@@ -147,6 +148,7 @@ export const StreamEmbed: FC<StreamProps> = ({
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const computedSrc = useIframeSrc(src, {
+    customerCode,
     muted,
     preload,
     loop,

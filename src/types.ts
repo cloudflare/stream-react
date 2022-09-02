@@ -144,6 +144,11 @@ export interface StreamProps {
    */
   currentTime?: number;
   /**
+   * Use unique subdomain for iframe source
+   * customer-<CODE>.cloudflarestream.com
+   */
+  customerCode?: string;
+  /**
    * Will initialize the player with the specified text track enabled. The value should be the BCP-47 language code that was used to [upload the text track](https://developers.cloudflare.com/stream/uploading-videos/adding-captions).
    * Note: This will _only_ work once during initialization. Beyond that point the user has full control over their text track settings.
    */

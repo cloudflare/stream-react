@@ -203,7 +203,7 @@ export interface StreamProps {
   startTime?: string | number;
   /**
    * Ref for accessing the underlying stream element. Useful for providing imperative access to the player API:
-   * https://developers.cloudflare.com/stream/viewing-videos/using-the-player-api
+   * https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/using-the-player-api
    */
   streamRef?: MutableRefObject<StreamPlayerApi | undefined>;
   /**

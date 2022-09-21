@@ -33,7 +33,7 @@ export type StreamProps = {
   src: string;
   /**
    * Ref for accessing the underlying Stream player API. Useful for providing imperative access:
-   * https://developers.cloudflare.com/stream/viewing-videos/using-the-player-api
+   * https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/using-the-player-api
    */
   streamRef?: MutableRefObject<StreamPlayerApi | undefined>;
   /**

@@ -1,0 +1,61 @@
+name: 'Create release and Publish'
+on:
+    push:
+        branches:
+            - 'staging'
+jobs:
+    release:
+        name: 'Create Github Release'
+        runs-on: 'ubuntu-latest'
+        outputs:
+            version: ${{ steps.semvers.outputs.patch }}
+            tag: ${{ steps.previoustag.outputs.tag }}
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0 # Required due to the weg Git works, without it this action won't be able to find any or the correct tags
+            - name: 'Get Previous tag'
+              id: previoustag
+              uses: 'WyriHaximus/github-action-get-previous-tag@v1'
+              with:
+                  fallback: 1.0.0 # Optional fallback tag to use when no tag can be found
+            - name: 'Get next minor version'
+              id: semvers
+              uses: 'WyriHaximus/github-action-next-semvers@v1'
+              with:
+                  version: ${{ steps.previoustag.outputs.tag }}
+            - uses: 'marvinpinto/action-automatic-releases@latest'
+              with:
+                  repo_token: '${{ secrets.GH_PACKAGE_PUBLISH }}'
+                  automatic_release_tag: ${{ steps.semvers.outputs.patch }}
+                  prerelease: false
+                  title: 'Latest Release - ${{ steps.semvers.outputs.patch }}'
+    publish-package:
+        name: 'Publish NPM Package'
+        needs: release # After release is created then run the second workflow
+        runs-on: 'ubuntu-latest'
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  ref: ${{ github.ref }}
+            - uses: pnpm/action-setup@v2.0.1
+              with:
+                  version: 6.13.0
+            - name: 'Setup Node.js'
+              uses: actions/setup-node@v2
+              with:
+                  node-version: '16.x'
+                  registry-url: 'https://npm.pkg.github.com'
+                  # Defaults to the user or organization that owns the workflow file
+                  scope: '@thriveglobal'
+            - name: Authenticate with the GitHub Package Registry
+              run: echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+            - run: pnpm install
+            - run: pnpx typewriter production
+            - run: pnpm webpack --config webpack.config.js --mode=production
+            - run: pnpm webpack --config webpack-commonjs.config.js --mode=production
+            - run: pnpm tsc
+            - run: npm version ${{ needs.release.outputs.version }} --no-commit-hooks --no-git-tag-version
+            - run: npm publish --no-git-checks
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

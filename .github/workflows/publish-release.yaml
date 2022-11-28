@@ -2,7 +2,7 @@ name: 'Create release and Publish'
 on:
     push:
         branches:
-            - 'staging'
+          - 'master'
 jobs:
     release:
         name: 'Create Github Release'

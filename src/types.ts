@@ -60,6 +60,10 @@ export interface StreamPlayerApi {
    */
   loop: boolean;
   /**
+   * elements will now be allowed to play inline, and will not automatically enter fullscreen mode when playback begins
+   */
+  playsinline?: boolean;
+  /**
    * A Boolean attribute which indicates the default setting of the audio contained in the video. If set, the audio will be initially silenced.
    */
   muted: boolean;
@@ -219,6 +223,10 @@ export interface StreamProps {
    * Sets volume from 0.0 (silent) to 1.0 (maximum value)
    */
   volume?: number;
+  /**
+   * elements will now be allowed to play inline, and will not automatically enter fullscreen mode when playback begins
+   */
+  playsinline?: boolean;
   /**
    * The width of the video’s display area, in CSS pixels.
    */

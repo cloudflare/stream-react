@@ -111,6 +111,7 @@ export const StreamEmbed: FC<StreamProps> = ({
   responsive = true,
   className,
   title,
+  playsinline = true,
   onAbort,
   onCanPlay,
   onCanPlayThrough,
@@ -160,6 +161,7 @@ export const StreamEmbed: FC<StreamProps> = ({
     adUrl,
     defaultTextTrack,
     startTime,
+    playsinline,
   });
 
   // While it's easier for most consumers to simply provide the video id
@@ -177,6 +179,7 @@ export const StreamEmbed: FC<StreamProps> = ({
   useProperty("primaryColor", ref, primaryColor);
   useProperty("letterboxColor", ref, letterboxColor);
   useProperty("volume", ref, volume);
+  useProperty("playsinline", ref, playsinline);
 
   // instantiate API after properties are bound because we want undefined
   // values to be set before defining the properties

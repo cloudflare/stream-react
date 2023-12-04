@@ -1,10 +1,8 @@
 {
   "name": "example",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "start": "vite"
   },
   "dependencies": {
     "react-app-polyfill": "^1.0.0"
@@ -18,6 +16,7 @@
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.8.4",
     "parcel": "^1.12.3",
-    "typescript": "^3.4.5"
+    "typescript": "^3.4.5",
+    "vite": "^5.0.5"
   }
 }

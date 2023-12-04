@@ -81,6 +81,10 @@ export type StreamProps = {
    */
   loop?: boolean;
   /**
+   * A `double` that indicates the rate at which the media is being played back.
+   */
+  playbackRate?: number;
+  /**
    * This enumerated attribute is intended to provide a hint to the browser about what the author thinks will lead to the best user experience. You may choose to include this attribute as a boolean attribute without a value, or you may specify the value preload="auto" to preload the beginning of the video. Not including the attribute or using preload="metadata" will just load the metadata needed to start video playback when requested.
    *
    * The <video> element does not force the browser to follow the value of this attribute; it is a mere hint. Even though the preload="none" option is a valid HTML5 attribute, Stream player will always load some metadata to initialize the player. The amount of data loaded in this case is negligable.

@@ -85,6 +85,12 @@ const App = () => {
     max: 1,
     step: 0.01,
   });
+  const playbackRate = useInput("playbackRate", 1, {
+    type: "range",
+    min: 0.25,
+    max: 2,
+    step: 0.25,
+  });
 
   return (
     <div>
@@ -97,9 +103,11 @@ const App = () => {
         responsive={responsive.value}
         autoplay={autoplay.value}
         volume={volume.value}
+        playbackRate={playbackRate.value}
       />
       <div>
         {volume.input}
+        {playbackRate.input}
         {muted.input}
         {autoplay.input}
         {loop.input}

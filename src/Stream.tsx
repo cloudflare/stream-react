@@ -106,6 +106,7 @@ export const StreamEmbed: FC<StreamProps> = ({
   poster,
   currentTime = 0,
   volume = 1,
+  playbackRate = 1,
   startTime,
   streamRef,
   responsive = true,
@@ -177,6 +178,7 @@ export const StreamEmbed: FC<StreamProps> = ({
   useProperty("primaryColor", ref, primaryColor);
   useProperty("letterboxColor", ref, letterboxColor);
   useProperty("volume", ref, volume);
+  useProperty("playbackRate", ref, playbackRate);
 
   // instantiate API after properties are bound because we want undefined
   // values to be set before defining the properties

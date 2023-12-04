@@ -76,6 +76,10 @@ export interface StreamPlayerApi {
    */
   play: () => Promise<void>;
   /**
+   * A `double` that indicates the rate at which the media is being played back.
+   */
+  playbackRate: number;
+  /**
    * An object conforming to the TimeRanges interface. This object is normalized, which means that ranges are ordered, don’t overlap, aren’t empty, and don’t touch (adjacent ranges are folded into one bigger range).
    */
   played: TimeRanges;
@@ -170,6 +174,10 @@ export interface StreamProps {
    * A Boolean attribute which indicates the default setting of the audio contained in the video. If set, the audio will be initially silenced.
    */
   muted?: boolean;
+  /**
+   * A `double` that indicates the rate at which the media is being played back.
+   */
+  playbackRate?: number;
   /**
    * A URL for an image to be shown before the video is started or while the video is downloading. If this attribute isn’t specified, a thumbnail image of the video is shown.
    */

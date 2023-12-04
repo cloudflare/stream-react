@@ -103,7 +103,7 @@ export interface StreamPlayerApi {
    */
   removeEventListener: (event: string, handler: EventListener) => void;
   /**
-   * Either the video id or the signed url for the video you’ve uploaded to Cloudflare Stream should be included here.
+   * Either the video UID or the signed token for the video you’ve uploaded to Cloudflare Stream should be included here.
    */
   src: string;
   /**
@@ -198,7 +198,7 @@ export interface StreamProps {
    */
   responsive?: boolean;
   /**
-   * Either the video id or the signed url for the video you’ve uploaded to Cloudflare Stream should be included here.
+   * Either the video UID or the signed token for the video you’ve uploaded to Cloudflare Stream should be included here.
    */
   src: string;
   /**
@@ -252,7 +252,7 @@ export interface StreamProps {
    */
   onEnded?: EventListener;
   /**
-   * Sent when an error occurs. (e.g. the video has not finished encoding yet, or the video fails to load due to an incorrect signed URL)
+   * Sent when an error occurs. (e.g. the video has not finished encoding yet, or the video fails to load due to an invalid signed token)
    */
   onError?: EventListener;
   /**

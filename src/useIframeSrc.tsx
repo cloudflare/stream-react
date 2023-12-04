@@ -30,7 +30,7 @@ export function useIframeSrc(
     adUrl,
     startTime,
     defaultTextTrack,
-    customerCode
+    customerCode,
   }: IframeSrcOptions
 ) {
   const paramString = [
@@ -51,7 +51,10 @@ export function useIframeSrc(
     .join("&");
 
   const iframeSrc = useMemo(
-    () => customerCode ? `https://customer-${customerCode}.cloudflarestream.com/${src}?${paramString}` : `https://iframe.cloudflarestream.com/${src}?${paramString}`,
+    () =>
+      customerCode
+        ? `https://customer-${customerCode}.cloudflarestream.com/${src}?${paramString}`
+        : `https://iframe.cloudflarestream.com/${src}?${paramString}`,
     // we intentionally do NOT include paramString here because we want
     // to avoid changing the URL when these options change. Changes to
     // these options will instead be handled separately via the SDK.

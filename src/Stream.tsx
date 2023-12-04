@@ -163,8 +163,8 @@ export const StreamEmbed: FC<StreamProps> = ({
     startTime,
   });
 
-  // While it's easier for most consumers to simply provide the video id
-  // or signed URL and have us compute the iframe's src for them, some
+  // While it's easier for most consumers to simply provide the video UID
+  // or signed token and have us compute the iframe's src for them, some
   // consumers may need to manually specify the iframe's src.
   const iframeSrc = validSrcUrl(src) ? src : computedSrc;
 

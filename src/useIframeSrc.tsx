@@ -53,7 +53,7 @@ export function useIframeSrc(
   const iframeSrc = useMemo(
     () =>
       customerCode
-        ? `https://customer-${customerCode}.cloudflarestream.com/${src}?${paramString}`
+        ? `https://customer-${customerCode}.cloudflarestream.com/${src}/iframe?${paramString}`
         : `https://iframe.cloudflarestream.com/${src}?${paramString}`,
     // we intentionally do NOT include paramString here because we want
     // to avoid changing the URL when these options change. Changes to

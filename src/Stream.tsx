@@ -19,10 +19,10 @@ import { validSrcUrl } from "./validSrcUrl";
 function useProperty<T, Key extends keyof T>(
   name: Key,
   ref: RefObject<T | undefined>,
-  value: T[Key]
+  value: T[Key] | undefined
 ) {
   useEffect(() => {
-    if (!ref.current) return;
+    if (!ref.current || value === undefined) return;
     const el = ref.current;
     el[name] = value;
   }, [name, value, ref]);
@@ -104,7 +104,7 @@ export const StreamEmbed: FC<StreamProps> = ({
   height,
   width,
   poster,
-  currentTime = 0,
+  currentTime,
   volume = 1,
   playbackRate = 1,
   startTime,
